@@ -1,10 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
 
-import WelcomeScreen from './app/screens/WelcomeScreen';
+import HomeScreen from 'screens/HomeScreen';
 
 const App = () => (
-  <View />
+  <HomeScreen />
 );
 
 export default App;
