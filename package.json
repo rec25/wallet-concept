@@ -8,6 +8,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-pro": "^5.13.0",
+    "@fortawesome/pro-light-svg-icons": "^5.13.0",
+    "@fortawesome/pro-regular-svg-icons": "^5.13.0",
+    "@fortawesome/pro-solid-svg-icons": "^5.13.0",
     "@react-native-community/hooks": "^2.6.0",
     "expo": "~37.0.3",
     "expo-splash-screen": "^0.2.3",
