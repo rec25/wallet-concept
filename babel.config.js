@@ -5,6 +5,8 @@ module.exports = function(api) {
     plugins: [
       ['module-resolver', {
         alias: {
+          "containers": "./app/containers",
+          "components": "./app/components",
           "screens": "./app/screens",
           "helpers": "./app/helpers",
           "assets": "./app/assets",

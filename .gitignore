@@ -64,3 +64,6 @@ web-build/
 
 # VS Code
 .vscode
+
+# Remove on main repo
+.npmrc

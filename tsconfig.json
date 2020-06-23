@@ -7,9 +7,11 @@
       "esnext"
     ],
     "paths": {
-      "screens/*": ["~screens/*"],
-      "helpers/*": ["~helpers/*"],
-      "assets/*": ["~assets/*"],
+      "components/*": ["components/*"],
+      "containers/*": ["containers/*"],
+      "screens/*": ["screens/*"],
+      "helpers/*": ["helpers/*"],
+      "assets/*": ["assets/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,

@@ -1,8 +1,12 @@
-export const colors = {};
+export const colors = {
+  // Greyscale
+  whisper: '#F7F6FB',
+  alabaster: '#FAFAFC',
 
-export const gradients = {};
-
-export default {
-  colors,
-  gradients,
+  // Purple
+  magorelle: '#5761E4',
+  lightslate: '#8F76F2',
+  lavender: '#B784FB',
 };
+
+export default colors;
