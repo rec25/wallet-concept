@@ -7,17 +7,37 @@ import {
   StatusBar,
   Image,
 } from 'react-native';
-import { faBell } from '@fortawesome/pro-regular-svg-icons';
+import { faBell, faDollarSign, faRubleSign } from '@fortawesome/pro-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import LinearGradient from 'react-native-linear-gradient';
 
 import { Layout, BoundaryBox, Switcher } from 'components';
+import CurrencyCell from 'components/Cell/CurrencyCell';
 import palette from 'helpers/palette';
 import flex from 'helpers/flex';
 
 import * as ActionImages from 'assets/action'; // todo: make it as svg
 import MonetaWalletImage from 'assets/MonetaWallet.png'; // todo: make it as svg
 import AvatarImage from 'assets/avatar.png'; // todo: make it as svg
+
+// todo: remove temporary DollarIcon plug
+const DollarIcon = () => (
+  <BoundaryBox
+    width={32}
+    style={{ backgroundColor: palette.emerald, borderRadius: 8 }}
+  >
+    <FontAwesomeIcon style={{ fontSize: 14 }} icon={faDollarSign} color="#fff" />
+  </BoundaryBox>
+);
+
+const RubleIcon = () => (
+  <BoundaryBox
+    width={32}
+    style={{ backgroundColor: palette.france, borderRadius: 8 }}
+  >
+    <FontAwesomeIcon style={{ fontSize: 14 }} icon={faRubleSign} color="#fff" />
+  </BoundaryBox>
+);
 
 // todo: investigate screen structure
 const HomeScreen = () => {
@@ -28,7 +48,8 @@ const HomeScreen = () => {
   };
 
   return (
-    <View>
+    // todo: update the View background color below
+    <View style={{ backgroundColor: palette.alabaster }}>
       <LinearGradient
         style={styles.linearGradient}
         locations={[0, 0.75]}
@@ -98,6 +119,13 @@ const HomeScreen = () => {
         </View>
   
         <Switcher items={['Fiat', 'Crypto']} active={currency} onPress={handleCurrencyChange} />
+
+        {/* todo: update its styles */}
+        {/* todo: make currency list as separated component */}
+        <View style={{ marginTop: 4 }}>
+          <CurrencyCell title="US Dollar" value="253.12 USD" icon={<DollarIcon />} sub="9:36 am • Done" />
+          <CurrencyCell title="Russian Ruble" value="13,543.16 RUB" icon={<RubleIcon />} note="~172.01 USD" />
+        </View>
       </Layout>
     </View>
   );
@@ -107,8 +135,6 @@ const HomeScreen = () => {
 const styles = StyleSheet.create({
   linearGradient: {
     paddingBottom: 72,
-    // borderBottomLeftRadius: 20,
-    // borderBottomRightRadius: 20,
     backgroundColor: palette.lavender
   },
   androidStatusBar: {
