@@ -1,5 +1,7 @@
 export const colors = {
   // Greyscale
+  cadet: '#98A0AE',
+  athens: '#EEF1F5',
   whisper: '#F7F6FB',
   alabaster: '#FAFAFC',
 

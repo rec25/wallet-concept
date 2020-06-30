@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   SafeAreaView,
@@ -11,7 +11,7 @@ import { faBell } from '@fortawesome/pro-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { Layout, BoundaryBox } from 'components';
+import { Layout, BoundaryBox, Switcher } from 'components';
 import palette from 'helpers/palette';
 import flex from 'helpers/flex';
 
@@ -20,76 +20,88 @@ import MonetaWalletImage from 'assets/MonetaWallet.png'; // todo: make it as svg
 import AvatarImage from 'assets/avatar.png'; // todo: make it as svg
 
 // todo: investigate screen structure
-const HomeScreen = () => (
-  <View>
-    <LinearGradient
-      style={styles.linearGradient}
-      locations={[0, 0.75]}
-      colors={[palette.magorelle, palette.lavender]}
-      useAngle={true}
-      angle={45}
-      angleCenter={{ x: 0.5, y: 0.5 }}
-    >
-      <SafeAreaView style={styles.androidStatusBar}>
-        <Layout style={styles.container}>
-          <View style={[flex.row, flex.betweenCenter]}>
-            <Image source={MonetaWalletImage} />
-            <View style={flex.row}>
-              <BoundaryBox>
-                <FontAwesomeIcon style={styles.bellIcon} icon={faBell} color="#fff" />
-              </BoundaryBox>
-              <Image source={AvatarImage} style={styles.avatar} />
+const HomeScreen = () => {
+  const [currency, setCurrency] = useState('Fiat');
+
+  const handleCurrencyChange = (name) => {
+    setCurrency(name);
+  };
+
+  return (
+    <View>
+      <LinearGradient
+        style={styles.linearGradient}
+        locations={[0, 0.75]}
+        colors={[palette.magorelle, palette.lavender]}
+        useAngle={true}
+        angle={45}
+        angleCenter={{ x: 0.5, y: 0.5 }}
+      >
+        <SafeAreaView style={styles.androidStatusBar}>
+          <Layout style={styles.container}>
+            <View style={[flex.row, flex.betweenCenter]}>
+              <Image source={MonetaWalletImage} />
+              <View style={flex.row}>
+                <BoundaryBox>
+                  <FontAwesomeIcon style={styles.bellIcon} icon={faBell} color="#fff" />
+                </BoundaryBox>
+                <Image source={AvatarImage} style={styles.avatar} />
+              </View>
             </View>
+  
+            <Text style={styles.subTitle}>Est. Total Balance</Text>
+  
+            <View style={styles.balanceContainer}>
+              <Text style={styles.balance}>1,273.64</Text>
+              <Text style={styles.currency}>usd</Text>
+            </View>
+          </Layout>
+        </SafeAreaView>
+      </LinearGradient>
+  
+      <Layout>
+        <View style={styles.menuContainer}>
+          <View style={styles.actionContainer}>
+            <View style={styles.menuItem}>
+              <Image source={ActionImages.Buy} />
+            </View>
+            <Text style={styles.actionText}>Buy</Text>
           </View>
-
-          <Text style={styles.subTitle}>Est. Total Balance</Text>
-
-          <View style={styles.balanceContainer}>
-            <Text style={styles.balance}>1,273.64</Text>
-            <Text style={styles.currency}>usd</Text>
+  
+          <View style={styles.actionContainer}>
+            <View style={styles.menuItem}>
+              <Image source={ActionImages.Sell} />
+            </View>
+            <Text style={styles.actionText}>Sell</Text>
           </View>
-        </Layout>
-      </SafeAreaView>
-    </LinearGradient>
-
-    <View style={styles.menuContainer}>
-      <View style={styles.actionContainer}>
-        <View style={styles.menuItem}>
-          <Image source={ActionImages.Buy} />
+  
+          <View style={styles.actionContainer}>
+            <View style={styles.menuItem}>
+              <Image source={ActionImages.Pay} />
+            </View>
+            <Text style={styles.actionText}>Pay</Text>
+          </View>
+  
+          <View style={styles.actionContainer}>
+            <View style={styles.menuItem}>
+              <Image source={ActionImages.Send} />
+            </View>
+            <Text style={styles.actionText}>Send</Text>
+          </View>
+  
+          <View style={styles.actionContainer}>
+            <View style={styles.menuItem}>
+              <Image source={ActionImages.Receive} />
+            </View>
+            <Text style={styles.actionText}>Receive</Text>
+          </View>
         </View>
-        <Text style={styles.actionText}>Buy</Text>
-      </View>
-
-      <View style={styles.actionContainer}>
-        <View style={styles.menuItem}>
-          <Image source={ActionImages.Sell} />
-        </View>
-        <Text style={styles.actionText}>Sell</Text>
-      </View>
-
-      <View style={styles.actionContainer}>
-        <View style={styles.menuItem}>
-          <Image source={ActionImages.Pay} />
-        </View>
-        <Text style={styles.actionText}>Pay</Text>
-      </View>
-
-      <View style={styles.actionContainer}>
-        <View style={styles.menuItem}>
-          <Image source={ActionImages.Send} />
-        </View>
-        <Text style={styles.actionText}>Send</Text>
-      </View>
-
-      <View style={styles.actionContainer}>
-        <View style={styles.menuItem}>
-          <Image source={ActionImages.Receive} />
-        </View>
-        <Text style={styles.actionText}>Receive</Text>
-      </View>
+  
+        <Switcher items={['Fiat', 'Crypto']} active={currency} onPress={handleCurrencyChange} />
+      </Layout>
     </View>
-  </View>
-);
+  );
+};
 
 // todo: investigate component's styles describing
 const styles = StyleSheet.create({
@@ -138,7 +150,7 @@ const styles = StyleSheet.create({
     ...flex.wrap,
     ...flex.justifyCenter,
     marginTop: -44,
-    marginBottom: -50,
+    marginBottom: 24,
     marginHorizontal: 'auto',
     alignSelf: 'center',
     width: 320,
