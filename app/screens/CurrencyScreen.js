@@ -13,14 +13,11 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import { palette, flex, theme } from 'helpers';
 import { Layout, BoundaryBox } from 'components';
-import CurrencyContainer from 'containers/CurrencyContainer';
 import BackButton from 'components/BackButton';
 
-import * as ActionImages from 'assets/action'; // todo: make it as svg
 import AvatarImage from 'assets/avatar.png'; // todo: make it as svg
 
-// todo: investigate screen structure
-const HomeScreen = () => (
+const CurrencyScreen = () => (
   <View style={theme.wrapper}>
     <LinearGradient
       style={styles.linearGradient}
@@ -52,7 +49,6 @@ const HomeScreen = () => (
   </View>
 );
 
-// todo: investigate component's styles describing
 const styles = StyleSheet.create({
   linearGradient: { paddingBottom: 72 },
   androidStatusBar: {
@@ -80,4 +76,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default HomeScreen;
+export default CurrencyScreen;
