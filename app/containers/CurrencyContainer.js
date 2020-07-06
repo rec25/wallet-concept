@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faDollarSign, faRubleSign } from '@fortawesome/pro-regular-svg-icons';
+import { faDollarSign, faRubleSign, faPlus } from '@fortawesome/pro-regular-svg-icons';
 
-import palette from 'helpers/palette';
+import { palette, flex } from 'helpers';
 import { BoundaryBox, Switcher } from 'components';
 import CurrencyCell from 'components/Cell/CurrencyCell';
 
@@ -51,6 +51,12 @@ const CurrencyContainer = () => {
 
   const cryptoList = (
     <View style={styles.currencyList}>
+      <View style={styles.newWallet}>
+        <BoundaryBox style={styles.plusIcon}>
+          <FontAwesomeIcon icon={faPlus} color={palette.lightslate} />
+        </BoundaryBox>
+        <Text style={styles.newWalletText}>Add new wallet</Text>
+      </View>
       <CurrencyCell title="MonetaX" value="5,333.000012 MNTX" icon={<MonetaIcon />} note="~1,261.01 USD" />
       <CurrencyCell title="Bitcoin" value="0.000012 BTC" icon={<BitcoinIcon />} note="~12.64 USD" />
     </View>
@@ -76,6 +82,22 @@ const CurrencyContainer = () => {
 
 const styles = StyleSheet.create({
   currencyList: { marginTop: 4 },
+  newWallet: {
+    ...flex.center,
+    ...flex.row,
+    marginTop: 12,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: palette.lightslate,
+    borderRadius: 12,
+    borderStyle: 'dashed',
+  },
+  newWalletText: {
+    color: palette.lightslate,
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  plusIcon: { marginRight: 8 }
 })
 
 
