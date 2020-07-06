@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Text,
   SafeAreaView,
@@ -11,7 +11,7 @@ import { faBell } from '@fortawesome/pro-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { palette, flex } from 'helpers';
+import { palette, flex, theme } from 'helpers';
 import { Layout, BoundaryBox } from 'components';
 import CurrencyContainer from 'containers/CurrencyContainer';
 
@@ -21,8 +21,7 @@ import AvatarImage from 'assets/avatar.png'; // todo: make it as svg
 
 // todo: investigate screen structure
 const HomeScreen = () => (
-  // todo: update the View background color below
-  <View style={{ backgroundColor: palette.alabaster }}>
+  <View style={theme.wrapper}>
     <LinearGradient
       style={styles.linearGradient}
       locations={[0, 0.75]}

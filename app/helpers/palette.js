@@ -20,7 +20,9 @@ export const colors = {
   france: '#4E8ED7',
 
   // Red
+  flame: '#EA5225',
   orange: '#FF8E00',
+  koromiko: '#FFBE6C',
 };
 
 export default colors;

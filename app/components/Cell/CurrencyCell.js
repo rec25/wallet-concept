@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import {
   Text,
   View,
+  TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { palette, flex } from 'helpers/';
 
@@ -25,8 +27,14 @@ const CurrencyCell = ({
   value,
   note,
 }) => {
+  const { navigate } = useNavigation();
+
+  const handleCellPress = (currencyName) => {
+    navigate('Currency');
+  };
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} activeOpacity={0.75} onPress={handleCellPress}>
       <View style={[flex.row, flex.alignCenter]}>
         <View style={styles.iconContainer}>{Icon}</View>
         <View style={flex.justifyCenter}>
@@ -38,8 +46,8 @@ const CurrencyCell = ({
         <Text style={styles.value}>{value}</Text>
         {note && <Text style={styles.note}>{note}</Text>}
       </View>
-    </View>
-  )
+    </TouchableOpacity>
+  );
 };
 
 const styles = StyleSheet.create({
