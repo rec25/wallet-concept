@@ -29,6 +29,7 @@ const CurrencyScreen = () => (
     >
       <SafeAreaView style={styles.androidStatusBar}>
         <Layout style={styles.container}>
+          {/* Header */}
           <View style={[flex.row, flex.betweenCenter, theme.relative]}>
             <BackButton />
             
@@ -43,6 +44,23 @@ const CurrencyScreen = () => (
               <Image source={AvatarImage} style={styles.avatar} />
             </View>
           </View>
+
+          {/* Info section */}
+          <View>
+            <View style={styles.infoContainer}>
+              <BoundaryBox width={32} style={styles.bitcoinContainer}>
+                <Text style={{ fontSize: 16, color: '#fff', fontWeight: 'bold' }}>B</Text>
+              </BoundaryBox>
+              <View style={styles.balanceContainer}>
+                <Text style={styles.balance}>0.000012</Text>
+                <Text style={styles.currency}>btc</Text>
+              </View>
+            </View>
+
+            <View style={styles.exchangeContainer}>
+              <Text style={styles.exchangeText}>~ 12.64 usd</Text>
+            </View>
+          </View>
         </Layout>
       </SafeAreaView>
     </LinearGradient>
@@ -50,10 +68,13 @@ const CurrencyScreen = () => (
 );
 
 const styles = StyleSheet.create({
+  // Screen
   linearGradient: { paddingBottom: 72 },
   androidStatusBar: {
     paddingTop: StatusBar.currentHeight || 0, // todo: check it on Android
   },
+
+  // Header 
   bellIcon: { fontSize: 16 },
   avatar: { marginLeft: 12 },
   headerTitleContainer: {
@@ -72,7 +93,49 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 14,
     fontWeight: '600',
-  }
+  },
+
+  // Info section
+  infoContainer: {
+    ...flex.row,
+    ...flex.alignCenter,
+    marginTop: 16,
+  },
+  bitcoinContainer: {
+    marginRight: 12,
+    borderWidth: 1,
+    borderColor: '#fff',
+    borderRadius: 8,
+  },
+  balanceContainer: {
+    ...flex.row,
+    ...flex.alignEnd,
+  },
+  balance: {
+    fontSize: 32,
+    lineHeight: 44,
+    fontWeight: '600',
+    color: '#fff',
+  },
+  currency: {
+    marginLeft: 8,
+    fontSize: 20,
+    lineHeight: 38,
+    fontWeight: '600',
+    textTransform: 'uppercase',
+    color: '#fff',
+  },
+  exchangeContainer: {
+    marginTop: 4,
+    marginLeft: 44,
+  },
+  exchangeText: {
+    fontSize: 14,
+    lineHeight: 22,
+    fontWeight: '600',
+    color: palette.athens,
+    opacity: 0.7,
+  },
 })
 
 

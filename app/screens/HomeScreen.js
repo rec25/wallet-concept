@@ -52,7 +52,7 @@ const HomeScreen = () => (
       </SafeAreaView>
     </LinearGradient>
 
-  <Layout>
+    <Layout>
       <View style={styles.menuContainer}>
         <View style={styles.actionContainer}>
           <View style={styles.menuItem}>
