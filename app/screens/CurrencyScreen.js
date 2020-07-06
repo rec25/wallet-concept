@@ -15,6 +15,7 @@ import { palette, flex, theme } from 'helpers';
 import { Layout, BoundaryBox } from 'components';
 import BackButton from 'components/BackButton';
 
+import * as ActionImages from 'assets/action'; // todo: make it as svg
 import AvatarImage from 'assets/avatar.png'; // todo: make it as svg
 
 const CurrencyScreen = () => (
@@ -64,6 +65,20 @@ const CurrencyScreen = () => (
         </Layout>
       </SafeAreaView>
     </LinearGradient>
+
+    {/* Action buttons */}
+    <Layout>
+      <View style={styles.actionContainer}>
+        <View style={styles.action}>
+          <Image source={ActionImages.Send} style={{ position: 'relative', bottom: 4 }} />
+          <Text style={styles.actionText}>Send</Text>
+        </View>
+        <View style={styles.action}>
+          <Image source={ActionImages.Receive} style={{ position: 'relative', top: 4 }} />
+          <Text style={styles.actionText}>Receive</Text>
+        </View>
+      </View>
+    </Layout>
   </View>
 );
 
@@ -113,7 +128,7 @@ const styles = StyleSheet.create({
   },
   balance: {
     fontSize: 32,
-    lineHeight: 44,
+  lineHeight: 44,
     fontWeight: '600',
     color: '#fff',
   },
@@ -134,7 +149,34 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     fontWeight: '600',
     color: palette.athens,
-    opacity: 0.7,
+    textTransform: 'uppercase',
+  },
+
+  // Action
+  actionContainer: {
+    ...flex.row,
+    marginTop: -24,
+    marginHorizontal: -8,
+  },
+  action: {
+    ...flex.row,
+    ...flex.center,
+    flex: 1,
+    marginHorizontal: 8,
+    height: 48,
+    borderRadius: 12,
+    backgroundColor: '#fff',
+
+    shadowColor: palette.orange,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+  },
+  actionText: {
+    marginLeft: 8,
+    color: palette.orange,
+    fontSize: 14,
+    fontWeight: '600',
   },
 })
 
