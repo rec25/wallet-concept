@@ -5,7 +5,8 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet
+  Share,
+  StyleSheet,
 } from 'react-native';
 import Modal from 'react-native-modal';
 import { faQrcode, faCopy, faInfoCircle, faPlusCircle } from '@fortawesome/pro-regular-svg-icons';
@@ -29,6 +30,16 @@ const SendModal = ({ isVisible, onClose }) => {
 
   const handleAmountVisibility = () => {
     setAmountVisibility(true);
+  };
+
+  const handleShare = async () => {
+    try {
+      await Share.share({
+        message: 'monetawallet/receive/3jks83kl2',
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const renderAmountSection = () => {
@@ -102,7 +113,7 @@ const SendModal = ({ isVisible, onClose }) => {
 
           {renderAmountSection()}
   
-          <TouchableOpacity style={styles.shareButton} onPress={onClose}>
+          <TouchableOpacity style={styles.shareButton} onPress={handleShare}>
             <Text style={[styles.shareButtonText, styles.semibold]}>Share</Text>
             <BoundaryBox>
               <FontAwesomeIcon size={16} icon={faPaperPlane} color="#fff" />

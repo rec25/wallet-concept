@@ -3,7 +3,7 @@ import {
   TouchableOpacity,
   Image,
   Text,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 
 import { flex, palette } from 'helpers';
@@ -23,7 +23,7 @@ const ReceiveButton = () => {
       <Text style={styles.actionText}>Receive</Text>
       <ReceiveModal isVisible={isModalVisible} onClose={handleModalToggle} />
     </TouchableOpacity>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
