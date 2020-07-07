@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faDollarSign, faRubleSign, faPlus } from '@fortawesome/pro-regular-svg-icons';
 
 import { palette, flex } from 'helpers';
 import { BoundaryBox, Switcher } from 'components';
 import CurrencyCell from 'components/Cells/CurrencyCell';
+import MethodModal from 'components/Modals/MethodModal';
 
 // todo: remove temporary DollarIcon plug
 const DollarIcon = () => (
@@ -35,6 +36,24 @@ const BitcoinIcon = () => (
   </BoundaryBox>
 );
 
+const NewWalletButton = () => {
+  const [isModalVisible, setModalVisibility] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalVisibility(!isModalVisible);
+  };
+
+  return (
+    <TouchableOpacity style={styles.newWallet} activeOpacity={0.95} onPress={handleModalToggle}>
+      <BoundaryBox style={styles.plusIcon}>
+        <FontAwesomeIcon icon={faPlus} color={palette.lightslate} />
+      </BoundaryBox>
+      <Text style={styles.newWalletText}>Add new wallet</Text>
+      <MethodModal isVisible={isModalVisible} onClose={handleModalToggle} />
+    </TouchableOpacity>
+  );
+};
+
 const CurrencyContainer = () => {
   const [currency, setCurrency] = useState('Fiat');
 
@@ -51,12 +70,7 @@ const CurrencyContainer = () => {
 
   const cryptoList = (
     <View style={styles.currencyList}>
-      <View style={styles.newWallet}>
-        <BoundaryBox style={styles.plusIcon}>
-          <FontAwesomeIcon icon={faPlus} color={palette.lightslate} />
-        </BoundaryBox>
-        <Text style={styles.newWalletText}>Add new wallet</Text>
-      </View>
+      <NewWalletButton />
       <CurrencyCell title="MonetaX" value="5,333.000012 MNTX" icon={<MonetaIcon />} note="~1,261.01 USD" />
       <CurrencyCell title="Bitcoin" value="0.000012 BTC" icon={<BitcoinIcon />} note="~12.64 USD" />
     </View>

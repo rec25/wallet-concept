@@ -20,7 +20,7 @@ const defaultProps = {
   isVisible: false,
 };
 
-const ReceiveModal = ({ isVisible, onClose }) => {
+const MethodModal = ({ isVisible, onClose }) => {
   const [amount, setAmount] = useState('0.00');
 
   const handleChange = (input) => {
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   }
 });
 
-ReceiveModal.propTypes = propTypes;
-ReceiveModal.defaultProps = defaultProps;
+MethodModal.propTypes = propTypes;
+MethodModal.defaultProps = defaultProps;
 
-export default ReceiveModal;
+export default MethodModal;
