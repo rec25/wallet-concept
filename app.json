@@ -12,6 +12,10 @@
     ],
     "assetBundlePatterns": [
       "**/*"
-    ]
+    ],
+    "ios": {
+      "bundleIdentifier": "com.moneta.wallet",
+      "buildNumber": "1.0.0"
+    }
   }
 }
