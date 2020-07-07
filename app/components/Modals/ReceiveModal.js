@@ -20,71 +20,79 @@ const defaultProps = {
   isVisible: false,
 };
 
-const ReceiveModal = ({ isVisible, onClose }) => (
-  <View>
-    <Modal
-      isVisible={isVisible}
-      style={styles.modal}
-      onSwipeComplete={onClose}
-      swipeDirection="down"
-      avoidKeyboard
-      hideModalContentWhileAnimating
-      onBackdropPress={onClose}
-    >
-      <View style={styles.contentWrapper}>
-        <View style={flex.alignCenter}>
-          <View style={styles.swipableMarker} />
-        </View>
-        <Text style={styles.heading}>Refill by VISA / MasterCard</Text>
+const ReceiveModal = ({ isVisible, onClose }) => {
+  const [amount, setAmount] = useState('0.00');
 
-        {/* Limits */}
-        <View style={[flex.row, flex.betweenCenter, styles.textMargin]}>
-          <Text style={[styles.text, styles.colorCadet]}>Transaction limit:</Text>
-          <Text style={[styles.text, styles.colorTwilight]}>
-            <Text style={styles.semibold}>60,000</Text> RUB
-          </Text>
-        </View>
-        <View style={[flex.row, flex.betweenCenter, styles.textMargin]}>
-          <Text style={[styles.text, styles.colorCadet]}>Monthly limit:</Text>
-          <Text style={[styles.text, styles.colorTwilight]}>
-            <Text style={styles.semibold}>576,000</Text> / 600,000 RUB
-          </Text>
-        </View>
+  const handleChange = (input) => {
+    setAmount(input);
+  };
 
-        {/* Progress bar */}
-        <View style={styles.progressContainer}>
-          <View style={styles.progress} />
-        </View>
-        {/* Progress bar */}
-
-        <Text style={[styles.text, styles.colorCadet]}>
-          Monthly limit will update after <Text style={[styles.text, styles.colorTwilight, styles.semibold]}>3 days</Text>
-        </Text>
-
-        {/* Balance */}
-        <View style={styles.balanceContainer}>
-          <Text style={[styles.label, styles.semibold]}>Amount</Text>
-          <View style={flex.row}>
-            <TextInput style={styles.input} defaultValue="0.00" />
-            <Text style={[styles.inputCurrency, styles.colorCadet]}>rub</Text>
+  return (
+    <View>
+      <Modal
+        isVisible={isVisible}
+        style={styles.modal}
+        onSwipeComplete={onClose}
+        swipeDirection="down"
+        avoidKeyboard
+        hideModalContentWhileAnimating
+        onBackdropPress={onClose}
+      >
+        <View style={styles.contentWrapper}>
+          <View style={flex.alignCenter}>
+            <View style={styles.swipableMarker} />
           </View>
+          <Text style={styles.heading}>Refill by VISA / MasterCard</Text>
+  
+          {/* Limits */}
+          <View style={[flex.row, flex.betweenCenter, styles.textMargin]}>
+            <Text style={[styles.text, styles.colorCadet]}>Transaction limit:</Text>
+            <Text style={[styles.text, styles.colorTwilight]}>
+              <Text style={styles.semibold}>60,000</Text> RUB
+            </Text>
+          </View>
+          <View style={[flex.row, flex.betweenCenter, styles.textMargin]}>
+            <Text style={[styles.text, styles.colorCadet]}>Monthly limit:</Text>
+            <Text style={[styles.text, styles.colorTwilight]}>
+              <Text style={styles.semibold}>576,000</Text> / 600,000 RUB
+            </Text>
+          </View>
+  
+          {/* Progress bar */}
+          <View style={styles.progressContainer}>
+            <View style={styles.progress} />
+          </View>
+          {/* Progress bar */}
+  
+          <Text style={[styles.text, styles.colorCadet]}>
+            Monthly limit will update after <Text style={[styles.text, styles.colorTwilight, styles.semibold]}>3 days</Text>
+          </Text>
+  
+          {/* Balance */}
+          <View style={styles.balanceContainer}>
+            <Text style={[styles.label, styles.semibold]}>Amount</Text>
+            <View style={flex.row}>
+              <TextInput style={styles.input} value={amount} keyboardType="numeric" onChangeText={handleChange} />
+              <Text style={[styles.inputCurrency, styles.colorCadet]}>rub</Text>
+            </View>
+          </View>
+  
+          <View style={[flex.row, flex.betweenCenter, styles.textMargin]}>
+            <Text style={[styles.fee, styles.colorCadet]}>Fee:</Text>
+            <Text style={[styles.text, styles.colorTwilight]}>0.00 RUB</Text>
+          </View>
+          <View style={[flex.row, flex.betweenCenter]}>
+            <Text style={styles.totalAmount}>Total:</Text>
+            <Text style={[styles.totalAmount, styles.semibold]}>{amount} RUB</Text>
+          </View>
+          <TouchableOpacity style={styles.continueButton} onPress={onClose}>
+            <Text style={[styles.continueButtonText, styles.semibold]}>Continue</Text>
+          </TouchableOpacity>
         </View>
-
-        <View style={[flex.row, flex.betweenCenter, styles.textMargin]}>
-          <Text style={[styles.fee, styles.colorCadet]}>Fee:</Text>
-          <Text style={[styles.text, styles.colorTwilight]}>0.00 RUB</Text>
-        </View>
-        <View style={[flex.row, flex.betweenCenter]}>
-          <Text style={styles.totalAmount}>Total:</Text>
-          <Text style={[styles.totalAmount, styles.semibold]}>0.00 RUB</Text>
-        </View>
-        <TouchableOpacity style={styles.continueButton} onPress={onClose}>
-          <Text style={[styles.continueButtonText, styles.semibold]}>Continue</Text>
-        </TouchableOpacity>
-      </View>
-    </Modal>
-  </View>
-);
+      </Modal>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   modal: {
