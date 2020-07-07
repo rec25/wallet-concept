@@ -15,7 +15,7 @@ import { palette, flex, theme } from 'helpers';
 import { Layout, BoundaryBox } from 'components';
 import BackButton from 'components/BackButton';
 import TransactionContainer from 'containers/TransactionConainer';
-import RecieveButton from 'containers/RecieveButton';
+import ReceiveButton from 'containers/ReceiveButton';
 import SendButton from 'containers/SendButton';
 
 import AvatarImage from 'assets/avatar.png'; // todo: make it as svg
@@ -72,7 +72,7 @@ const CurrencyScreen = () => (
     <Layout>
       <View style={styles.actionContainer}>
         <SendButton />
-        <RecieveButton />
+        <ReceiveButton />
       </View>
 
       <TransactionContainer />

@@ -10,7 +10,7 @@ import { flex, palette } from 'helpers';
 import ReceiveModal from 'components/Modals/ReceiveModal';
 import { Receive as ReceiveImage } from 'assets/action'; // todo: make it as svg
 
-const RecieveButton = () => {
+const ReceiveButton = () => {
   const [isModalVisible, setModalVisibility] = useState(false);
 
   const handleModalToggle = () => {
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default RecieveButton;
+export default ReceiveButton;

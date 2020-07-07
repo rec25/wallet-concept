@@ -1,15 +1,30 @@
-import React from 'react'
-import { View, Image, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react'
+import {
+  TouchableOpacity,
+  Image,
+  Text,
+  StyleSheet,
+} from 'react-native';
 
 import { flex, palette } from 'helpers';
+import SendModal from 'components/Modals/SendModal';
 import { Send as SendImage } from 'assets/action'; // todo: make it as svg
 
-const SendButton = () => (
-  <View style={styles.action}>
-    <Image source={SendImage} style={{ position: 'relative', bottom: 4 }} />
-    <Text style={styles.actionText}>Send</Text>
-  </View>
-);
+const SendButton = () => {
+  const [isModalVisible, setModalVisibility] = useState(false);
+
+  const handleModalToggle = () => {
+    setModalVisibility(!isModalVisible);
+  };
+
+  return (
+    <TouchableOpacity style={styles.action} activeOpacity={0.95} onPress={handleModalToggle}>
+      <Image source={SendImage} style={{ position: 'relative', bottom: 4 }} />
+      <Text style={styles.actionText}>Send</Text>
+      <SendModal isVisible={isModalVisible} onClose={handleModalToggle} />
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   action: {

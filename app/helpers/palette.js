@@ -10,7 +10,7 @@ export const colors = {
   // Purple
   haiti: '#190F36',
   magorelle: '#5761E4',
-  lightslate: '#8F76F2',
+  lightslate: '#8D75F1',
   lavender: '#B784FB',
 
   // Green
