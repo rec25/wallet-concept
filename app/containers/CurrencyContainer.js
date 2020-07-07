@@ -5,7 +5,7 @@ import { faDollarSign, faRubleSign, faPlus } from '@fortawesome/pro-regular-svg-
 
 import { palette, flex } from 'helpers';
 import { BoundaryBox, Switcher } from 'components';
-import CurrencyCell from 'components/Cell/CurrencyCell';
+import CurrencyCell from 'components/Cells/CurrencyCell';
 
 // todo: remove temporary DollarIcon plug
 const DollarIcon = () => (

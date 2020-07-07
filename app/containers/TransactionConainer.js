@@ -8,7 +8,7 @@ import {
 
 import { palette } from 'helpers';
 import Switcher from 'components/Switcher';
-import TransactionCell from 'components/Cell/TransactionCell';
+import TransactionCell from 'components/Cells/TransactionCell';
 
 const DateHeading = ({ text }) => <Text style={styles.date}>{text}</Text>;
 
