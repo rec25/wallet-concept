@@ -14,9 +14,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import { palette, flex, theme } from 'helpers';
 import { Layout, BoundaryBox } from 'components';
 import BackButton from 'components/BackButton';
-import TransactionContainer from 'containers/TransactionConainer'
+import TransactionContainer from 'containers/TransactionConainer';
+import RecieveButton from 'containers/RecieveButton';
+import SendButton from 'containers/SendButton';
 
-import * as ActionImages from 'assets/action'; // todo: make it as svg
 import AvatarImage from 'assets/avatar.png'; // todo: make it as svg
 
 const CurrencyScreen = () => (
@@ -70,14 +71,8 @@ const CurrencyScreen = () => (
     {/* Action buttons */}
     <Layout>
       <View style={styles.actionContainer}>
-        <View style={styles.action}>
-          <Image source={ActionImages.Send} style={{ position: 'relative', bottom: 4 }} />
-          <Text style={styles.actionText}>Send</Text>
-        </View>
-        <View style={styles.action}>
-          <Image source={ActionImages.Receive} style={{ position: 'relative', top: 4 }} />
-          <Text style={styles.actionText}>Receive</Text>
-        </View>
+        <SendButton />
+        <RecieveButton />
       </View>
 
       <TransactionContainer />
@@ -160,27 +155,7 @@ const styles = StyleSheet.create({
     ...flex.row,
     marginTop: -24,
     marginHorizontal: -8,
-  },
-  action: {
-    ...flex.row,
-    ...flex.center,
-    flex: 1,
-    marginHorizontal: 8,
-    height: 48,
-    borderRadius: 12,
-    backgroundColor: '#fff',
-
-    shadowColor: palette.orange,
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-  },
-  actionText: {
-    marginLeft: 8,
-    color: palette.orange,
-    fontSize: 14,
-    fontWeight: '600',
-  },
+  }
 })
 
 
