@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import { palette, flex } from 'components/Cells/node_modules/helpers/';
+import { palette, flex } from 'helpers/';
 
 const propTypes = {
   active: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
