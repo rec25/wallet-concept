@@ -1,9 +1,9 @@
 {
-  "name": "moneta-wallet-app",
-  "displayName": "moneta-wallet-app",
+  "name": "wallet-app",
+  "displayName": "wallet-app",
   "expo": {
-    "name": "moneta-wallet-app",
-    "slug": "expo-template-bare",
+    "name": "wallet-app",
+    "slug": "wallet-app",
     "version": "1.0.0",
     "platforms": [
       "ios",
