@@ -14,6 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { palette, flex, theme } from 'helpers';
 import { Layout, BoundaryBox } from 'components';
 import BackButton from 'components/BackButton';
+import TransactionContainer from 'containers/TransactionConainer'
 
 import * as ActionImages from 'assets/action'; // todo: make it as svg
 import AvatarImage from 'assets/avatar.png'; // todo: make it as svg
@@ -78,6 +79,8 @@ const CurrencyScreen = () => (
           <Text style={styles.actionText}>Receive</Text>
         </View>
       </View>
+
+      <TransactionContainer />
     </Layout>
   </View>
 );
