@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import { flex, palette } from 'helpers';
-import MethodModal from 'components/Modals/MethodModal';
+import ReceiveModal from 'components/Modals/ReceiveModal';
 import { Receive as ReceiveImage } from 'assets/action'; // todo: make it as svg
 
 const ReceiveButton = () => {
@@ -21,7 +21,7 @@ const ReceiveButton = () => {
     <TouchableOpacity style={styles.action} activeOpacity={0.95} onPress={handleModalToggle}>
       <Image source={ReceiveImage} style={{ position: 'relative', top: 4 }} />
       <Text style={styles.actionText}>Receive</Text>
-      <MethodModal isVisible={isModalVisible} onClose={handleModalToggle} />
+      <ReceiveModal isVisible={isModalVisible} onClose={handleModalToggle} />
     </TouchableOpacity>
   )
 };
